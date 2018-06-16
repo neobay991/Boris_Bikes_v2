@@ -2,10 +2,10 @@ require "docking_station"
 
 describe DockingStation do
 
-  # this test is checking if the release_bike method exists
+  # checks if the release_bike method exists
   it { is_expected.to respond_to :release_bike }
 
-  # this test is checking you can only release a bike after the bike is docked
+  # checks you can only release a bike after the bike is docked
   describe '#release_bike' do
     it 'release working bike' do
       bike = Bike.new
@@ -20,10 +20,10 @@ describe DockingStation do
     end
   end
 
-  # this test is checking if the doc_bike method exists
+  # checks if the doc_bike method exists
   it { is_expected.to respond_to :dock_bike }
 
-  # this test is checking capacity, if the capacity exceeds 20, throw an error
+  # checks capacity, if the capacity exceeds 20, throw an error
   describe '#dock_bike' do
     it 'raise an error if no capacity available' do
       20.times { subject.dock_bike(Bike.new) }
@@ -31,13 +31,29 @@ describe DockingStation do
     end
   end
 
-  # this test is checking if I can parse the doc_bike method 1 argument
+  # checks if I can parse the doc_bike method 1 argument
   it { is_expected.to respond_to(:dock_bike).with(1).argument }
 
-  # this test is checking if the dock_capacity_full method exists
+  # checks if the dock_capacity_full method exists
   it { is_expected.to respond_to :dock_capacity_full? }
 
   # this test is checking if the dock_capacity_empty method exists
   it { is_expected.to respond_to :dock_capacity_empty? }
+
+  # checks the default capacity is set if no custom capacity is parsed
+  describe '#initalize' do
+    it 'set default capacity value when no value set' do
+      station = DockingStation.new
+      expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+  end
+
+  # checks a system maintainer can set capacity to overides the default value
+  describe '#initalize' do
+    it 'set a custom capacity when value set' do
+      station = DockingStation.new(50)
+      expect(station.capacity).to eq 50
+    end
+  end
 
 end

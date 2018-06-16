@@ -4,12 +4,14 @@ class DockingStation
   # using attr_reader to make the instance variable :bikes (@bikes)
   # available outside the Class
   attr_reader :bikes
+  attr_accessor :capacity
 
   # using a Constant to set capacity of the dock station
   DEFAULT_CAPACITY = 20
 
-  def initialize
+  def initialize(custom_capacity = DEFAULT_CAPACITY)
     @bikes = []
+    @capacity = custom_capacity
   end
 
   def release_bike
@@ -31,7 +33,7 @@ class DockingStation
   end
 
   def dock_capacity_full?
-    @bikes.count >= DEFAULT_CAPACITY
+    @bikes.count >= @capacity
   end
 
   def dock_capacity_empty?
