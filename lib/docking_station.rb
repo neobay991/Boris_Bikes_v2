@@ -32,6 +32,8 @@ class DockingStation
     @bikes << bike
   end
 
+private
+
   def dock_capacity_full?
     @bikes.count >= @capacity
   end

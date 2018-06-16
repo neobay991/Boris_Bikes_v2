@@ -34,12 +34,6 @@ describe DockingStation do
   # checks if I can parse the doc_bike method 1 argument
   it { is_expected.to respond_to(:dock_bike).with(1).argument }
 
-  # checks if the dock_capacity_full method exists
-  it { is_expected.to respond_to :dock_capacity_full? }
-
-  # this test is checking if the dock_capacity_empty method exists
-  it { is_expected.to respond_to :dock_capacity_empty? }
-
   # checks the default capacity is set if no custom capacity is parsed
   describe '#initalize' do
     it 'set default capacity value when no value set' do
