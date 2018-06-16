@@ -1,7 +1,7 @@
 require_relative 'bike'
 
 class DockingStation
-  # using attr_reader to make the instance variable :bike (@bike)
+  # using attr_reader to make the instance variable :bikes (@bikes)
   # available outside the Class
   attr_reader :bikes
 
@@ -13,7 +13,8 @@ class DockingStation
   end
 
   def release_bike
-    # this is a guard condition
+    # this is a guard condition that also includes a predicate method
+    # (lorem ipsum?)
     fail 'no bikes available' if dock_capacity_empty?
 
     # remove the last value in the array i.e. release 1 bike
@@ -21,7 +22,8 @@ class DockingStation
   end
 
   def dock_bike(bike)
-    # this is a guard condition
+    # this is a guard condition that also includes a predicate method
+    # (lorem ipsum?)
     fail 'no space available to dock bike' if dock_capacity_full?
 
     # add a value to the array i.e. add 1 bike
