@@ -36,17 +36,9 @@ class DockingStation
   def dock_capacity_empty?
     @bikes.empty?
   end
-
-=begin
-this method is not required, since we are using attr_reader :bike
-to read the instance variable
-  def docked_bike
-    @bike
-  end
-=end
 end
 
-
+=begin
 ###### local debugging ######
 # require './lib/docking_station'
 # require './lib/bike'
@@ -71,3 +63,4 @@ puts "Docking station full: " + station.dock_capacity_full?.to_s
 
 # see if the docking station is empty (true/false)
 puts "Docking station empty: " +  station.dock_capacity_empty?.to_s
+=end

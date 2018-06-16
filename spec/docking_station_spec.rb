@@ -17,7 +17,7 @@ describe DockingStation do
 
   describe '#release_bike' do
     it 'raise an error if no bikes available' do
-      expect(subject.release_bike).to raise_error "no bikes available"
+      expect{subject.release_bike}.to raise_error "no bikes available"
     end
   end
 
@@ -29,7 +29,7 @@ describe DockingStation do
   describe '#dock_bike' do
     it 'raise an error if no capacity available' do
       20.times { subject.dock_bike(Bike.new) }
-      expect(subject.dock_bike(Bike.new)).to raise_error "no space available to dock bike"
+      expect{subject.dock_bike(Bike.new)}.to raise_error "no space available to dock bike"
     end
   end
 
@@ -44,18 +44,19 @@ describe DockingStation do
 
   # this test is checking if the dock_capacity_empty method exists
   it { is_expected.to respond_to :dock_capacity_empty? }
-
-  # this test is checking if the dock is full
 =begin
+  # this test is checking if the dock is full
+begin
   describe '#dock_full?' do
     it 'checks that the dock is full' do
       station = DockingStation.new
       bike = Bike.new
       20.times {subject.dock_bike(bike)}
-      expect(subject.dock_bike(20)).to eq 20
+      expect(subject.dock_bike(bike)).to eq 20
 
     end
   end
+
 
 
 
