@@ -1,7 +1,7 @@
 require "bike"
 
 describe Bike do
-  it { is_expected.to respond_to :working? }
+  it { is_expected.to respond_to :initalize }
 
   describe '#initalize' do
     it 'check the bike is not broken when a new bike object is created' do
@@ -9,6 +9,8 @@ describe Bike do
       expect(bike.initalize).to eq true
     end
   end
+
+  it { is_expected.to respond_to :working? }
 
   describe '#working?' do
     it 'reports bike as NOT working after being reported broken' do
