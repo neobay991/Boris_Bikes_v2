@@ -1,6 +1,5 @@
 require 'garage'
 
-
 describe Garage do
 
   it { is_expected.to respond_to :fix_broken_bike }
@@ -19,7 +18,4 @@ describe Garage do
       expect(garage.fix_broken_bike_array.count).to eq 1
     end
   end
-
-
-
 end

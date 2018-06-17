@@ -105,6 +105,4 @@ describe DockingStation do
       expect(station.bikes.count).to eq 1
     end
   end
-
-
 end

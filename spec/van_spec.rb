@@ -1,10 +1,8 @@
 require 'van'
 
-
 describe Van do
 
   it { is_expected.to respond_to :send_broken_bike }
-
 
   describe '#send_broken_bike_to_van' do
     it 'send broken bike to a van' do
@@ -58,8 +56,4 @@ describe Van do
         expect(garage.fix_broken_bike_array.count).to eq 10
       end
     end
-
-
-
-
 end
