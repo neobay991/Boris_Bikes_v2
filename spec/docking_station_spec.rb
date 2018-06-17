@@ -9,16 +9,25 @@ describe DockingStation do
   describe '#release_bike' do
     it 'release bike' do
       bike = Bike.new
-      subject.dock_bike(bike)
-      expect(subject.release_bike).to eq bike
+      station = DockingStation.new
+      station.dock_bike(bike)
+      expect(station.release_bike).to eq bike
     end
   end
-
-
 
   describe '#release_bike' do
     it 'raise an error if no bikes available' do
       expect{subject.release_bike}.to raise_error "no bikes available"
+    end
+  end
+
+  describe '#release_bike' do
+    it 'unable to release a broken bike' do
+      bike = Bike.new
+      station = DockingStation.new
+      20.times { station.dock_bike(bike) }
+      station.report_bike_broken(bike)
+      expect(station.release_bike).to eq "no bikes available"
     end
   end
 
@@ -30,6 +39,27 @@ describe DockingStation do
     it 'raise an error if no capacity available' do
       20.times { subject.dock_bike(Bike.new) }
       expect{subject.dock_bike(Bike.new)}.to raise_error "no space available to dock bike"
+    end
+  end
+
+  describe '#dock_bike' do
+    it 'dock a bike' do
+      station = DockingStation.new
+      bike = Bike.new
+      station.dock_bike(bike)
+      #checking size of array to verify bike is docked
+      expect(station.bikes.size).to eq 1
+    end
+  end
+
+  describe '#dock_bike' do
+    it 'dock a broken bike' do
+      station = DockingStation.new
+      bike = Bike.new
+      station.report_bike_broken(bike)
+      station.dock_bike(bike)
+      #checking size of array to verify bike is docked
+      expect(station.bikes.size).to eq 1
     end
   end
 
@@ -56,7 +86,7 @@ describe DockingStation do
     it 'reports bike as broken' do
       bike = Bike.new
       station = DockingStation.new
-      expect(bike.report_bike).to eq false
+      expect(station.report_bike_broken(bike)).to eq false
     end
   end
 

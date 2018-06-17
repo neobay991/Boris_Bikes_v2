@@ -9,11 +9,11 @@ class Bike
     @bike_working
   end
 
-  def report_bike
-    @bike_working = false
-  end
+#  def report_bike
+#    @bike_working = false
+#  end
 
-  def broken?
-    @bike_working
+  def broken
+    @bike_working = false
   end
 end
