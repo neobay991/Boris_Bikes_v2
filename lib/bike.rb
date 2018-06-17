@@ -1,3 +1,4 @@
+# understands if a bike is working or not
 class Bike
   attr_accessor :bike_working
 
@@ -8,10 +9,6 @@ class Bike
   def working?
     @bike_working
   end
-
-#  def report_bike
-#    @bike_working = false
-#  end
 
   def broken
     @bike_working = false

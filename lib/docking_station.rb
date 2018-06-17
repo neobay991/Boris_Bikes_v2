@@ -1,8 +1,8 @@
 require_relative 'bike'
 require_relative 'van'
 
+# understands how to cock and release bikes and also report broken bikes
 class DockingStation
-
   # using a Constant to set capacity of the dock station
   DEFAULT_CAPACITY = 20
 
@@ -66,38 +66,3 @@ private
     @bikes.empty?
   end
 end
-
-=begin
-###### local debugging ######
-# require './lib/docking_station'
-# require './lib/bike'
-
-station = DockingStation.new(1)
-bike = Bike.new
-
-# doc 10 bikes
-station.dock_bike(bike)
-
-# see if the bikes are stored in the array (docking capacity)
-puts "bikes stored in array: " + station.bikes.count.to_s
-puts "bike working " + bike.working?.to_s
-puts "bike working " + station.bike_working.to_s
-p station.release_bike
-
-#bike.broken?
-#puts "bike broken " + bike.broken?.to_s
-
-
-#puts "report bike broken "
-#station.report_bike
-
-#puts "bike working - bike class " + bike.working?.to_s
-#puts "bike working - BC class " + station.bike_working.to_s
-
-
-# release 5 bikes
-station.release_bike
-
-# see if the bikes are removed from the array (docking capacity)
-puts "bikes stored in array after releasing bike: " + station.bikes.count.to_s
-=end

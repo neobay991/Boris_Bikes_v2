@@ -1,7 +1,7 @@
-require 'docking_station.rb'
+require 'docking_station'
 
+# understands how to collect broken bikes from the Van Class and fix them
 class Garage
-
   attr_accessor :fix_broken_bike_array
 
   def initalize()
@@ -13,5 +13,4 @@ class Garage
         @fix_broken_bike_array << broken_bike
       end
   end
-
 end
