@@ -2,7 +2,7 @@
 class Bike
   attr_accessor :bike_working
 
-  def initalize
+  def initialize
     @bike_working = true
   end
 

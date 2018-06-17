@@ -9,9 +9,7 @@ describe Garage do
       station = DockingStation.new
       bike = Bike.new
       van = Van.new
-      van.initalize
       garage = Garage.new
-      garage.initalize
       station.report_bike_broken(Bike.new)
       broken_bikes_van_array = station.send_broken_bike_to_van(Bike.new, van)
       garage.fix_broken_bike(broken_bikes_van_array)

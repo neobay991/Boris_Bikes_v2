@@ -4,7 +4,7 @@ require 'docking_station'
 class Garage
   attr_accessor :fix_broken_bike_array
 
-  def initalize()
+  def initialize
     @fix_broken_bike_array = []
   end
 

@@ -1,7 +1,7 @@
 require 'docking_station'
 
 # understands how to collect broken bikes from the DockingStation Class and
-# send them to the Garage. 
+# send them to the Garage.
 # Understands how to collect fixed bikes from the Garage Class.
 class Van
   VAN_DEFAULT_COUNTER = 5
@@ -9,7 +9,7 @@ class Van
   attr_accessor :broken_bikes_van_array
   attr_accessor :fixed_bikes_van_array
 
-  def initalize()
+  def initialize
     @broken_bikes_van_array = []
     @fixed_bikes_van_array = []
   end
