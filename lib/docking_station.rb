@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 
 class DockingStation
 
@@ -13,6 +14,7 @@ class DockingStation
     @bikes = []
     @capacity = custom_capacity
     @bike_working = true
+    #van = Van.new
   end
 
   def release_bike
@@ -21,7 +23,6 @@ class DockingStation
     fail 'no bikes available' if dock_capacity_empty?
 
     if @bike_working == true
-      #puts @bike_working
     # remove the last value in the array i.e. release 1 bike
       @bikes.pop
     else
@@ -43,11 +44,19 @@ class DockingStation
     @bike_working = bike.broken
   end
 
+  def send_broken_bike_to_van(bike, van)
+    if @bike_working == false
+    van.send_broken_bike(bike)
+    end
+  end
+
+  def collect_fixed_bike_from_van(fixed_bikes_van_array)
+    fixed_bikes_van_array.each do |fixed_bikes|
+      @bikes << fixed_bikes
+    end
+  end
+
 private
-
-# using attr_reader to make the instance variable :bikes (@bikes)
-# available outside the Class
-
 
   def dock_capacity_full?
     @bikes.count >= @capacity

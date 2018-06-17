@@ -92,4 +92,19 @@ describe DockingStation do
     end
   end
 
+  describe '#collect_fixed_bike_from_van' do
+    it 'collect fixed bikes from Van' do
+      station = DockingStation.new
+      bike = Bike.new
+      van = Van.new
+      van.initalize
+      garage = Garage.new
+      garage.initalize
+      fixed_bikes_van_array = [1]
+      station.collect_fixed_bike_from_van(fixed_bikes_van_array)
+      expect(station.bikes.count).to eq 1
+    end
+  end
+
+
 end
