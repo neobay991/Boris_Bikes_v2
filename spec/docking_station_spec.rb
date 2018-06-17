@@ -7,12 +7,14 @@ describe DockingStation do
 
   # checks you can only release a bike after the bike is docked
   describe '#release_bike' do
-    it 'release working bike' do
+    it 'release bike' do
       bike = Bike.new
       subject.dock_bike(bike)
       expect(subject.release_bike).to eq bike
     end
   end
+
+
 
   describe '#release_bike' do
     it 'raise an error if no bikes available' do
@@ -47,6 +49,14 @@ describe DockingStation do
     it 'set a custom capacity when value set' do
       station = DockingStation.new(50)
       expect(station.capacity).to eq 50
+    end
+  end
+
+  describe '#report_bike' do
+    it 'reports bike as broken' do
+      bike = Bike.new
+      station = DockingStation.new
+      expect(bike.report_bike).to eq false
     end
   end
 
