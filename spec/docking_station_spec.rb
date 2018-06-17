@@ -69,7 +69,7 @@ describe DockingStation do
   it { is_expected.to respond_to(:dock_bike).with(1).argument }
 
   # checks the default capacity is set if no custom capacity is parsed
-  describe '#initalize' do
+  describe '#initialize' do
     it 'set default capacity value when no value set' do
       station = double(:dockingstation, capacity: 20)
       expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
