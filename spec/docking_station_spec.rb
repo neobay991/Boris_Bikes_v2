@@ -7,12 +7,14 @@ describe DockingStation do
 
   # checks you can only release a bike after the bike is docked
   describe '#release_bike' do
+    let(:bike) { Bike.new }
+
     it 'release bike' do
       bike = double(:bike)
-      station = double(:dockingstation, capacity: 20, dock_bike: true,
+      subject = double(:dockingstation, capacity: 20, dock_bike: true,
       report_bike_broken:true, release_bike: bike)
-      station.dock_bike(bike)
-      expect(station.release_bike).to eq bike
+      subject.dock_bike(double(:bike))
+      expect(subject.release_bike).to eq bike
     end
   end
 
@@ -23,13 +25,15 @@ describe DockingStation do
   end
 
   describe '#release_bike' do
+    let(:bike) { Bike.new }
+
     it 'unable to release a broken bike' do
       bike = double(:bike, broken: false)
-      station = double(:dockingstation, capacity: 20, dock_bike: true,
+      subject = double(:dockingstation, capacity: 20, dock_bike: true,
       report_bike_broken:true, release_bike: "no bikes available")
-      20.times { station.dock_bike(bike) }
-      station.report_bike_broken(bike)
-      expect(station.release_bike).to eq "no bikes available"
+      20.times { subject.dock_bike(double(:bike)) }
+      subject.report_bike_broken(double(:bike))
+      expect(subject.release_bike).to eq "no bikes available"
     end
   end
 
@@ -45,23 +49,25 @@ describe DockingStation do
   end
 
   describe '#dock_bike' do
+    let(:bike) { Bike.new }
+
     it 'dock a bike' do
-      station = DockingStation.new
       bike = double(:bike, broken: false)
-      station.dock_bike(bike)
+      subject.dock_bike(bike)
       #checking size of array to verify bike is docked
-      expect(station.bikes.size).to eq 1
+      expect(subject.bikes.size).to eq 1
     end
   end
 
   describe '#dock_bike' do
+    let(:bike) { Bike.new }
+
     it 'dock a broken bike' do
-      station = DockingStation.new
       bike = double(:bike, broken: false)
-      station.report_bike_broken(bike)
-      station.dock_bike(bike)
+      subject.report_bike_broken(bike)
+      subject.dock_bike(bike)
       #checking size of array to verify bike is docked
-      expect(station.bikes.size).to eq 1
+      expect(subject.bikes.size).to eq 1
     end
   end
 
@@ -71,36 +77,34 @@ describe DockingStation do
   # checks the default capacity is set if no custom capacity is parsed
   describe '#initialize' do
     it 'set default capacity value when no value set' do
-      station = double(:dockingstation, capacity: 20)
-      expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+      subject = double(:dockingstation, capacity: 20)
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
   end
 
   # checks a system maintainer can set capacity to overides the default value
   describe '#initalize' do
     it 'set a custom capacity when value set' do
-      station = double(:dockingstation, capacity: 50)
-      expect(station.capacity).to eq 50
+      subject = double(:dockingstation, capacity: 50)
+      expect(subject.capacity).to eq 50
     end
   end
 
   describe '#report_bike' do
+    let(:bike) { Bike.new }
+    
     it 'reports bike as broken' do
       bike = double(:bike, broken: false)
-      station = double(:dockingstation, report_bike_broken: false)
-      expect(station.report_bike_broken(bike)).to eq false
+      subject = double(:dockingstation, report_bike_broken: false)
+      expect(subject.report_bike_broken(bike)).to eq false
     end
   end
 
   describe '#collect_fixed_bike_from_van' do
     it 'collect fixed bikes from Van' do
-      station = DockingStation.new
-      bike = Bike.new
-      van = Van.new
-      garage = Garage.new
       fixed_bikes_van_array = [1]
-      station.collect_fixed_bike_from_van(fixed_bikes_van_array)
-      expect(station.bikes.count).to eq 1
+      subject.collect_fixed_bike_from_van(fixed_bikes_van_array)
+      expect(subject.bikes.count).to eq 1
     end
   end
 end

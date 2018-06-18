@@ -3,8 +3,8 @@ require 'bike'
 describe Bike do
   describe '#initialize' do
     it 'check the bike is not broken when a new bike object is created' do
-      bike = double(:bike, initialize: true)
-      expect(bike.initialize).to eq true
+      subject = double(:bike, initialize: true)
+      expect(subject.initialize).to eq true
     end
   end
 
@@ -12,21 +12,21 @@ describe Bike do
 
   describe '#working?' do
     it 'reports bike as NOT working after being reported broken' do
-      bike = double(:bike, broken: true, working?: false)
+      subject = double(:bike, broken: true, working?: false)
       station = DockingStation.new(1)
-      station.dock_bike(bike)
-      station.report_bike_broken(bike)
-      expect(bike.working?).to eq false
+      station.dock_bike(subject)
+      station.report_bike_broken(subject)
+      expect(subject.working?).to eq false
     end
   end
 
   describe '#broken' do
     it 'reports bike as NOT working after being reported broken' do
-      bike = double(:bike, broken: false)
+      subject = double(:bike, broken: false)
       station = DockingStation.new(1)
-      station.dock_bike(bike)
-      station.report_bike_broken(bike)
-      expect(bike.broken).to eq false
+      station.dock_bike(subject)
+      station.report_bike_broken(subject)
+      expect(subject.broken).to eq false
     end
   end
 end
